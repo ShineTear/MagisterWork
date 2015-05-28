@@ -256,7 +256,14 @@ THREE.FlyControls = function ( object, domElement ) {
 		};
 
 	};
-
+	this.stop = function(){
+		this.domElement.removeEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
+		this.domElement.removeEventListener( 'keydown', bind( this, this.keydown ), false );
+		this.domElement.removeEventListener( 'keyup',   bind( this, this.keyup ), false );
+		
+		//this.object.remove;
+		//this = null;
+	}
 	
 	this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
 
@@ -264,8 +271,8 @@ THREE.FlyControls = function ( object, domElement ) {
 	//this.domElement.addEventListener( 'mousedown', bind( this, this.mousedown ), false );
 	//this.domElement.addEventListener( 'mouseup',   bind( this, this.mouseup ), false );
 
-	window.addEventListener( 'keydown', bind( this, this.keydown ), false );
-	window.addEventListener( 'keyup',   bind( this, this.keyup ), false );
+	this.domElement.addEventListener( 'keydown', bind( this, this.keydown ), false );
+	this.domElement.addEventListener( 'keyup',   bind( this, this.keyup ), false );
 
 	this.updateMovementVector();
 	this.updateRotationVector();
@@ -273,5 +280,5 @@ THREE.FlyControls = function ( object, domElement ) {
 
 };
 
-//THREE.FlyControls.prototype = Object.create( THREE.EventDispatcher.prototype );
-//THREE.FlyControls.prototype.constructor = THREE.FlyControls;
+THREE.FlyControls.prototype = Object.create( THREE.EventDispatcher.prototype );
+THREE.FlyControls.prototype.constructor = THREE.FlyControls;

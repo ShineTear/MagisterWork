@@ -670,7 +670,6 @@ THREE.OrbitControls = function ( object, domElement ) {
 		this.domElement.removeEventListener( 'touchend', touchend, false );
 		this.domElement.removeEventListener( 'touchmove', touchmove, false );
 		
-		this.enabled = false;
 		//this.object.remove;
 		//this = null;
 	}
